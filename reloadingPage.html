@@ -33,39 +33,54 @@
                 font-size:  24px;
                 text-indent: 0px;
             }
+
+            .escape {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .fakeload {
+                opacity:0.8;
+                background-color:#BADA55;
+                position:fixed;
+                width:100%;
+                height:100%;
+                top:0px;
+                left:0px;
+                z-index:1000;
+            }
         </style>
     </head>
     <body>
+        <div class="fakeLoad">
+            HASJAS
+        </div>
         <header>
             <b>The Limes</b>
         </header>
+        
         <main>
             <div>
-                <p class="title">The Rise of Remote Work and Its Impact on Work-Life Balance</p>
+                <p class="title">Feasibility of a Citizen-driven Hackathon to Increase Public Engagement</p>
+                <p class="title">GET TO THE BOTTOM</p>
                 <p>
-                Over the past few years, remote work has evolved from a niche option to a
-                mainstream reality for millions of employees around the world.   
+                    Interdisciplinary approaches are needed to address complex societal problems, such as the opioid crisis. We sought to explore the feasibility and potential issues encountered in planning and implementing a 24-hour hackathon competition to bring together teams from law enforcement, public health, and data science to develop solutions to the opioid epidemic.
                 </p> 
                 <p>
-                What was once seen as a perk or temporary measure during the 
-                pandemic has now become a long-term fixture for
-                many businesses and workers alike.
-                With the convenience of working from home, 
-                employees have gained a new sense of freedom, 
-                but this shift has also come with challenges. 
-                The balance between work and life has been altered,
-                often blurring the lines between professional responsibilities and personal time.
+                    We enlisted an advisory board and planning committee, including key stakeholders (e.g., high-level representatives from government agencies) to plan the event. Teams completed an online registration form with questions about team composition. Each team captain completed a survey at the event describing prior experiences with their team, knowledge and interest around the opioid epidemic, and hackathon expectations.
                 </p>
                 <p>
-                    The rapid rise of electric vehicles can be attributed to several key technological advancements. 
-                    The most notable of these is the development of more efficient and affordable battery technology. 
-                    Lithium-ion batteries, which power most modern EVs, have seen significant improvements in energy density, charging speed, and cost over the past decade. 
-                    These advancements have made EVs more affordable, with longer driving ranges and faster charging times, making them a more practical option for everyday consumers.
+                    Twenty-nine teams (108 individuals) registered. 76% had a technical/engineering background. Participants were from industry (55%), academia (30%), public health/medicine (9%), and government/public policy (6%). Nineteen teams attended the event. Team captains were primarily 18–29 years of age, had moderate experience and interest in the opioid crisis, and had never attended an opioid-related event.
                 </p>
                 <p>
-                    The trend of <a href="index.html">Click Me </a>remote work has been growing steadily for years. Advances in technology, such as cloud computing, video conferencing, and collaboration tools, have made it easier for teams to stay connected and productive from virtually anywhere. In fact, according to a report by Gallup, the percentage of U.S. employees working remotely at least part-time has increased by 87% since the early 2000s.
-
-However, the COVID-19 pandemic accelerated this shift in unprecedented ways. As businesses scrambled to adjust to lockdowns and social distancing measures, remote work became a necessity for survival. This rapid adoption forced both companies and employees to adapt quickly, and many discovered that working from home could be just as productive — or even more so — than working in an office.
+                    Over the past twenty years, the United States (US) has seen a dramatic increase in the use and misuse of opioids (Skolnick, 2018). In the early 2000s, there was a significant increase in the availability and use of prescription opioid medication (Wilkerson et al., 2016). As general medical use of opioids became commonplace, nonmedical use also increased (Wilkerson et al., 2016). Additionally, misuse and abuse of prescription opioids contributed to an increase in heroin and fentanyl overdoses (Gellad et al., 2017). As the number of deaths resulting from opioid overdose continues to rise, the need for new and innovative approaches is more important than ever.
+                </p>
+                <p>
+                    New approaches that engage society are necessary to address the opioid epidemic. These strategies may include education, risk mitigation, addiction treatment (Gellad et al., 2017), vaccines (Skolnick, 2018), pain management (Jones et al., 2015), and community public education efforts (Koh, 2015). However, these often-siloed approaches may have only limited effectiveness and only engage select groups. While these approaches are important in prevention and treatment of opioid use disorder, an approach that engages multiple disciplines, especially helping to engage general citizens, is necessary to effectively address this epidemic. For example, research studies have shown potential in bridging general citizens with researchers in technology, psychology, and clinical fields, such as by using social media/online communities to change health behaviors including HIV and substance use (Ashrafian et al., 2014; Young et al., 2013, 2015, 2019; Young & Heinzerling, 2017). Other studies have bridged these groups by using artificial intelligence modeling methods for detecting outcomes among at-risk populations, including opioid-related populations (Lo-Ciganic et al., 2019; Pandrekar et al., 2018; Young et al., 2018). Similarly, actively engaging citizens in the design, development and implementation of public health and opioid-related solutions may help to improve creativity, engagement, and health outcomes within society.
+                </p>
+                <a href="index.html" class="escape">HERE!</a>
+                <p>
+                    Relatively newly emerging approaches, such as hackathons, are looking to improve health outcomes using technology in ways that engage societal participation (Angelidis et al., 2016). Hackathons are intense, short-duration competitions in which teams work together to develop a new solution, usually a working software prototype, to a challenge (Angelidis et al., 2016; Komssi et al., 2015). Hackathons encourage collaboration between multiple disciplines as new ideas are generated (Angelidis et al., 2016; Iqbal et al., 2018). With the increasing need for new approaches to combat the opioid crisis, hackathons have the potential to generate novel solutions to this challenge.
                 </p>
             </div>
         </main>
@@ -80,13 +95,20 @@ However, the COVID-19 pandemic accelerated this shift in unprecedented ways. As 
         } 
         else if (condition > 20) {
             // Scroll up or down randomly
-            window.scrollBy({
-                top: 400,
-                behavior: "smooth"
-            });
+            
         }
     }
 
-    setInterval(chaoticBehavior, 100);
+    // setInterval(chaoticBehavior, 100);
+    setInterval(() => {
+        window.scrollTo(0, window.scrollY - 5)
+    }, 10)
+
+    setInterval(() => {
+        window.scrollBy({
+            top: Math.random() * window.innerHeight,
+            behavior: "smooth"
+        });
+    }, 5000)
     </script>
 </html>
