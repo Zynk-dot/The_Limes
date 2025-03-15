@@ -226,9 +226,20 @@
       }
     });
 
+    function delayedPrintOutput(text, delay) {
+        setTimeout(() => printOutput(text), delay);
+    }
     // Display an initial welcome message
-    printOutput("Welcome to the useless article terminal.");
-    printOutput("Type 'help' for a list of commands.");
+    delayedPrintOutput("ERROR: Critical file 'index.html' missing at line:56 in midEnd.js", 500);
+    delayedPrintOutput("WARNING: System failed to load primary documentation.", 1000);
+    delayedPrintOutput("ATTEMPTING RECOVERY...", 1500);
+    delayedPrintOutput("RECOVERY FAILED.", 4000);
+    delayedPrintOutput("ERROR: File '/home/user/articles/article.txt' not accessible.", 4500);
+    delayedPrintOutput("SYSTEM LOG: User intervention required.", 5500);
+    printOutput("HINT: find the files if you do want to read it",6000);
+    printOutput("INFO: we contact admin will be fixed shortly.",6000)
+    delayedPrintOutput("Type 'help' for a list of commands.", 6000);
+
   </script>
 </body>
 </html>
