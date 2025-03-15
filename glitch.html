@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Glitched Article</title>
+  <style>
+    body {
+      margin: 20px;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #000;
+      line-height: 1.6;
+    }
+    /* Mark text elements that should glitch */
+    .shake {
+      display: inline-block;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <header>
+        <p class="shake">The Rise of Remote Work and Its Impact on Work-Life Balance</p>
+        <p class="shake">
+        Over the past few years, remote work has evolved from a niche option to a
+        mainstream reality for millions of employees around the world.   
+        </p> 
+        <p class="shake">
+        What was once seen as a perk or temporary measure during the 
+        pandemic has now become a long-term fixture for
+        many businesses and workers alike.
+        With the convenience of working from home, 
+        employees have gained a new sense of freedom, 
+        but this shift has also come with challenges. 
+        The balance between work and life has been altered,
+        often blurring the lines between professional responsibilities and personal time.
+        </p>
+        <p class="shake">
+            The rapid rise of electric vehicles can be attributed to several key technological advancements. 
+            The most notable of these is the development of more efficient and affordable battery technology. 
+            Lithium-ion batteries, which power most modern EVs, have seen significant improvements in energy density, charging speed, and cost over the past decade. 
+            These advancements have made EVs more affordable, with longer driving ranges and faster charging times, making them a more practical option for everyday consumers.
+        </p>
+        <p class="shake">
+            The trend of remote work has been growing steadily for years. Advances in technology, such as cloud computing, video conferencing, and collaboration tools, have made it easier for teams to stay connected and productive from virtually anywhere. In fact, according to a report by Gallup, the percentage of U.S. employees working remotely at least part-time has increased by 87% since the early 2000s.
+
+However, the COVID-19 pandemic accelerated this shift in unprecedented ways. As businesses scrambled to adjust to lockdowns and social distancing measures, remote work became a necessity for survival. This rapid adoption forced both companies and employees to adapt quickly, and many discovered that working from home could be just as productive — or even more so — than working in an office.
+        </p>
+    </section>
+  </article>
+  <script>
+    // Randomly reposition each element with the class "shake"
+    function applyGlitch() {
+      const elements = document.querySelectorAll('.shake');
+      elements.forEach(el => {
+        // Generate a random offset between -3 and +3 pixels
+        const randomX = Math.floor(Math.random() * 7) - 3;
+        const randomY = Math.floor(Math.random() * 7) - 3;
+        el.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      });
+    }
+
+    // Replace text of each element with random characters while preserving spaces
+    function scrambleLetters() {
+      const elements = document.querySelectorAll('.shake');
+      const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:'\",.<>/?\\|";
+      elements.forEach(el => {
+        // Save the original text if not already stored
+        let original = el.getAttribute('data-original');
+        if (!original) {
+          original = el.textContent;
+          el.setAttribute('data-original', original);
+        }
+        let scrambled = '';
+        for (let i = 0; i < original.length; i++) {
+          if (original[i] === ' ') {
+            scrambled += ' ';
+          } else {
+            scrambled += possible.charAt(Math.floor(Math.random() * possible.length));
+          }
+        }
+        el.textContent = scrambled;
+      });
+    }
+
+    // Update positions every 100ms for a teleporting effect
+    setInterval(applyGlitch, 100);
+    // Scramble letters every 200ms so text becomes unreadable
+    setInterval(scrambleLetters, 200);
+  </script>
+</body>
+</html>
