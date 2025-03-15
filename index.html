@@ -14,39 +14,15 @@
         .popup a:hover { text-decoration: underline; }
         .popup button { background: #000; color: #fff; border: none; padding: 10px 20px; width: 100%; border-radius: 4px; cursor: pointer; margin-top: 20px; }
         .popup button:hover { background: #333; }
-    </style>
-    <style>
-
-        main, header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        header {
-            font-size: 40px;    
-            border-bottom: 1px gray solid;
-        }
-        div {
-            width: 400px;
-            align-self: center;
-        }
-
-        p {
-            align-self: center;
-            text-indent: 40px;
-            font-size: 20px;
-        }
-
-        .title {
-            font-weight: bold;
-            font-style: italic;
-            font-size:  24px;
-            text-indent: 0px;
-        }
+        iframe {
+                border: none;
+                width: 100%;
+                height: 100%;
+            }
     </style>
 </head>
 <body>
+    <iframe src="basic.html"></iframe>
     <button class="bouncing-button" onclick="alert('Next page!')">Onward!</button>
 
     <script>
