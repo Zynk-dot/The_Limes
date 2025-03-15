@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bouncing Button</title>
@@ -30,6 +29,11 @@
 
         .show {
             display: block;
+        }
+        .cat {
+            width: 50px;
+            height: 50px;
+            object-fit: cover; 
         }
     </style>
 </head>
@@ -89,7 +93,7 @@
 
     <div id="popupHolder">
         <div class="randomPopup popup show">
-            <img src="https://picsum.photos/50">
+            <img class="cat" src="awesome_popup_terms/cate.jpg">
             <button onclick="popUpRemove(this)">X</button>
         </div>
     </div>
