@@ -12,7 +12,7 @@
       color: #0F0;
       font-family: monospace;
     }
-
+    /* Terminal output area */
     #terminal {
       height: calc(100% - 40px);
       overflow-y: auto;
@@ -20,7 +20,7 @@
       box-sizing: border-box;
       white-space: pre-wrap;
     }
-
+    /* Input line container */
     #input-line {
       display: flex;
       align-items: center;
@@ -28,11 +28,11 @@
       border-top: 1px solid #0F0;
       background-color: #000;
     }
-
+    /* Prompt style */
     #prompt {
       margin-right: 10px;
     }
-
+    /* Input field style */
     #cmdInput {
       flex: 1;
       background: none;
@@ -75,7 +75,7 @@
       }
     };
 
-    let currentPath = "/home/user"; 
+    let currentPath = "/home/user"; // Start in /home/user
     const terminal = document.getElementById('terminal');
     const cmdInput = document.getElementById('cmdInput');
     const promptSpan = document.getElementById('prompt');
@@ -204,6 +204,10 @@
             if (confirm("Are you sure you want to terminate the terminal?")) {
               printOutput("Terminal terminated.");
               cmdInput.disabled = true;
+              // Redirect to a different URL after a short delay
+              setTimeout(function() {
+                window.location.href = "https://zynk-dot.github.io/scrapstuff-/";
+              }, 1000); // 1-second delay for message display
             }
           }
           break;
