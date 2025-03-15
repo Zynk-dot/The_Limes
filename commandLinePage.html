@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="icon" type="image/x-icon" href="./images/theLimes.png">
   <meta charset="UTF-8">
   <title>Useless Article Terminal</title>
   <style>
@@ -51,24 +52,38 @@
     <input id="cmdInput" type="text" autofocus autocomplete="off">
   </div>
   <script>
-    // Define a faux Linux-like file system
     const fileSystem = {
       "home": {
+        "welcome.txt": "Welcome to the article terminal. Enjoy the useless experience!",
         "user": {
-          "articles": {
-            "welcome.txt": "Welcome to the article terminal. Enjoy the useless experience!",
-            "article.txt": "Events where groups of people come together to create or improve software using large data sets are usually called hackathons. As health data researchers who want to build and maintain public trust, we recommend the use of alternative terms, such as datathon and code fest.\nHackathon is a portmanteau that combines the words “hack” and “marathon.” The “hack” in hackathon is meant to refer to a clever and improvised way of doing something rather than unauthorized computer or data access. From a computer scientist’s perspective, “hackathon” probably sounds innovative, intensive and maybe a little disruptive, but in a helpful rather than criminal way.\nThe issue is that members of the public do not interpret “hack” the way that computer scientists do.\nOur team, and many others, have performed research studies to understand the public’s interests and concerns when health data are used for research and innovation. In all of these studies, we are not aware of any positive references to “hack” or related terms. But studies from Canada, the United Kingdom and Australia have all found that members of the public consistently raise hacking as a major concern for health data.\nFear of hacking\nIt is not hard to figure out where negative associations with the word “hack” come from. There is a regular stream of news headlines, like: “As Hackers Take Down Newfoundland’s Health-Care System, Silence Descends”; “T-Mobile Says Hackers Accessed Personal Data of an Additional 5.3 Million Customers”; and “They Told Their Therapists Everything. Hackers Leaked It All.”\nTaking the research studies and news headlines together, there are strong reasons to think that the term hackathon will be perceived as negative to members of the public. Based on the common use and understanding of hacking, the term hackathon could even be perceived as threatening if it is misinterpreted as referring to an event where computer scientists do unauthorized things with data.\nTransparent, research-based, written by experts – and always free.\nLanguage is important when talking about health data — it helps to create transparency and build trust around managing people’s information and privacy. As such, words must be chosen carefully, and should be guided by the preferences and concerns of the people whose data are being used for research and innovation.\nRead more: Plain language about health data is essential for transparency and trust\nAlternatives to hackathon\nThere are alternatives to the term hackathon, but they are used much less frequently. For example, a Google search conducted in July 2022 returned 58.7 million results for “hackathon” compared to 617,000 results for “datathon” and 54,700 results for “code fest.” There were more than 90 references to “hackathon” for every “datathon” reference that the Google search identified.\nIn the research literature there is a slightly higher frequency of alternative terms, but hackathon still dominates. For example, a July 2022 Google Scholar search identified 30 times more scholarly “hackathon” publications than there were “datathon” publications.\nWidespread use of the term hackathon may be reinforced by software libraries and dictionaries that perpetuate outdated and harmful terminology. For example, in the current version of Microsoft Word, “hackathon” is a recognized word but “datathon” is flagged as a spelling mistake.\nJustin Trudeau addresses a large group of university students in a tiered lecture hall\nPrime Minister Justin Trudeau speaks to students attending Hack The North, Canada’s largest hackathon, in Waterloo, Ont., on Sept. 15, 2017. THE CANADIAN PRESS/Hannah Yoon\nTrustworthy language\nWe are not saying that hackathons are bad, just that the label most commonly used for them is problematic. And it’s not as though we lack alternatives to the term hackathon. Another way of looking at the Google search results is that the term datathon has been used hundreds of thousands of times, including by well-known organizations such as the EU Datathon.\nGiven public concerns about hacking and data, we recommend that datathon and other alternatives to hackathon be used more often. Words matter and using language like datathon can help organizations that hold or provide access to data show that they are attentive to the concerns of the people and communities that the data is about. \n \n \n !!! YOU SHOULD NOT SEE THIS MESSAGE !!! if you do contact the admin \n # ----------- use exit to exit the terminal ----------- #"
-          },
-          "notes.txt": "User notes: Nothing important here."
+          "notes.txt": "User notes: Nothing important here. Maybe check somewhere else?"
         }
       },
       "var": {
+        "articles": {
+            "no_articles_here.txt": "self_explanitory... or maybe?",
+            "piece1.txt": "F"
+          },
         "log": {
           "system.log": "System Log: Everything is running... sort of.",
-          "error.log": "Error Log: No errors detected."
+          "errors": {
+            "error.log": "Error Log: No errors detected.",
+            "piece2.txt": "R"
+          }
         }
       },
-      "etc": {
+      "downloads": {
+        "FREE_GIFT_CARD.exe": "...really?",
+        "personal": {
+          "don't enter": {
+            "final chance": {
+              "piece3.txt": "E",
+            }
+          }
+        }
+      },
+      "The Limes": {
+        "piece4": "E",
         "config": {
           "settings.conf": "Config: The settings are purposely confusing."
         }
@@ -149,14 +164,12 @@
                 currentPath = parts.length ? "/" + parts.join("/") : "/";
               }
             } else if (target.startsWith("/")) {
-              // Absolute path
               if (getPathNode(target)) {
                 currentPath = target;
               } else {
                 printOutput("Directory not found.");
               }
             } else {
-              // Relative path
               let newPath = currentPath === "/" ? "/" + target : currentPath + "/" + target;
               if (getPathNode(newPath)) {
                 currentPath = newPath;
@@ -195,7 +208,7 @@
               printOutput("Usage: man [command]");
               break;
             }
-            // Placeholder for manual pages
+
             printOutput(`No manual entry for ${args[1]}`);
           }
           break;
@@ -204,19 +217,22 @@
             if (confirm("Are you sure you want to terminate the terminal?")) {
               printOutput("Terminal terminated.");
               cmdInput.disabled = true;
-              // Redirect to a different URL after a short delay
+
               setTimeout(function() {
                 window.location.href = "https://zynk-dot.github.io/scrapstuff-/";
-              }, 1000); // 1-second delay for message display
+              }, 1000);
             }
           }
           break;
         default:
           printOutput("Command not recognized. Type 'help' for available commands.");
+        case "FREE":
+          {
+            printOutput("Events where groups of people come together to create or improve software using large data sets are usually called hackathons. As health data researchers who want to build and maintain public trust, we recommend the use of alternative terms, such as datathon and code fest.\nHackathon is a portmanteau that combines the words “hack” and “marathon.” The “hack” in hackathon is meant to refer to a clever and improvised way of doing something rather than unauthorized computer or data access. From a computer scientist’s perspective, “hackathon” probably sounds innovative, intensive and maybe a little disruptive, but in a helpful rather than criminal way.\nThe issue is that members of the public do not interpret “hack” the way that computer scientists do.\nOur team, and many others, have performed research studies to understand the public’s interests and concerns when health data are used for research and innovation. In all of these studies, we are not aware of any positive references to “hack” or related terms. But studies from Canada, the United Kingdom and Australia have all found that members of the public consistently raise hacking as a major concern for health data.\nFear of hacking\nIt is not hard to figure out where negative associations with the word “hack” come from. There is a regular stream of news headlines, like: “As Hackers Take Down Newfoundland’s Health-Care System, Silence Descends”; “T-Mobile Says Hackers Accessed Personal Data of an Additional 5.3 Million Customers”; and “They Told Their Therapists Everything. Hackers Leaked It All.”\nTaking the research studies and news headlines together, there are strong reasons to think that the term hackathon will be perceived as negative to members of the public. Based on the common use and understanding of hacking, the term hackathon could even be perceived as threatening if it is misinterpreted as referring to an event where computer scientists do unauthorized things with data.\nTransparent, research-based, written by experts – and always free.\nLanguage is important when talking about health data — it helps to create transparency and build trust around managing people’s information and privacy. As such, words must be chosen carefully, and should be guided by the preferences and concerns of the people whose data are being used for research and innovation.\nRead more: Plain language about health data is essential for transparency and trust\nAlternatives to hackathon\nThere are alternatives to the term hackathon, but they are used much less frequently. For example, a Google search conducted in July 2022 returned 58.7 million results for “hackathon” compared to 617,000 results for “datathon” and 54,700 results for “code fest.” There were more than 90 references to “hackathon” for every “datathon” reference that the Google search identified.\nIn the research literature there is a slightly higher frequency of alternative terms, but hackathon still dominates. For example, a July 2022 Google Scholar search identified 30 times more scholarly “hackathon” publications than there were “datathon” publications.\nWidespread use of the term hackathon may be reinforced by software libraries and dictionaries that perpetuate outdated and harmful terminology. For example, in the current version of Microsoft Word, “hackathon” is a recognized word but “datathon” is flagged as a spelling mistake.\nJustin Trudeau addresses a large group of university students in a tiered lecture hall\nPrime Minister Justin Trudeau speaks to students attending Hack The North, Canada’s largest hackathon, in Waterloo, Ont., on Sept. 15, 2017. THE CANADIAN PRESS/Hannah Yoon\nTrustworthy language\nWe are not saying that hackathons are bad, just that the label most commonly used for them is problematic. And it’s not as though we lack alternatives to the term hackathon. Another way of looking at the Google search results is that the term datathon has been used hundreds of thousands of times, including by well-known organizations such as the EU Datathon.\nGiven public concerns about hacking and data, we recommend that datathon and other alternatives to hackathon be used more often. Words matter and using language like datathon can help organizations that hold or provide access to data show that they are attentive to the concerns of the people and communities that the data is about. \n \n \n !!! YOU SHOULD NOT SEE THIS MESSAGE !!! if you do contact the admin \n # ----------- use exit to exit the terminal ----------- #")
+          }
       }
     }
 
-    // Listen for the Enter key and process input commands
     cmdInput.addEventListener('keydown', function(e) {
       if (e.key === "Enter") {
         const command = cmdInput.value;
@@ -229,17 +245,17 @@
     function delayedPrintOutput(text, delay) {
         setTimeout(() => printOutput(text), delay);
     }
-    // Display an initial welcome message
+
     delayedPrintOutput("ERROR: Critical file 'index.html' missing at line:56 in midEnd.js", 500);
     delayedPrintOutput("WARNING: System failed to load primary documentation.", 1000);
     delayedPrintOutput("ATTEMPTING RECOVERY...", 1500);
     delayedPrintOutput("RECOVERY FAILED.", 4000);
     delayedPrintOutput("ERROR: File '/home/user/articles/article.txt' not accessible.", 4500);
     delayedPrintOutput("SYSTEM LOG: User intervention required.", 5500);
-    printOutput("HINT: find the files if you do want to read it",6000);
+    printOutput("HINT: find the code and enter it into the terminal",6000);
     printOutput("INFO: we contact admin will be fixed shortly.",6000)
     delayedPrintOutput("Type 'help' for a list of commands.", 6000);
-
+    
   </script>
 </body>
 </html>
