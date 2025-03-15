@@ -6,6 +6,9 @@ while (true){
     }
     else if (condition > 20){
         // Scroll up or popup
-        window.scrollBy(0, 100);
+        window.scrollBy({
+            top: 200,
+            behavior: "smooth"
+        })
     }
 }
