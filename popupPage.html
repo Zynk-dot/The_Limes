@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<<<<<<< HEAD
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Button</title>
+    <style>
+        body { margin: 0; height: 100vh; overflow: hidden; position: relative; background-color: #f0f0f0; }
+        .bouncing-button { position: absolute; background: #000; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; transition: top 1s ease, left 1s ease; -webkit-transition: top 1s ease, left 1s ease; }
+        .popup { background: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); width: 400px; padding: 20px; text-align: center; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; }
+        .popup h2 { margin-top: 0; }
+        .popup p { color: #555; }
+        .popup a { color: #0073e6; text-decoration: none; margin: 0 5px; }
+        .popup a:hover { text-decoration: underline; }
+        .popup button { background: #000; color: #fff; border: none; padding: 10px 20px; width: 100%; border-radius: 4px; cursor: pointer; margin-top: 20px; }
+        .popup button:hover { background: #333; }
+        iframe {
+                border: none;
+                width: 100%;
+                height: 100%;
+            }
+        .randomPopup.popup {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 50px;
+            left: 120px;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="basic.html"></iframe>
+    <button class="bouncing-button" onclick="alert('Next page!')">Onward!</button>
+
+    <script>
+        const button = document.querySelector('.bouncing-button');
+
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - button.clientWidth);
+            const y = Math.random() * (window.innerHeight - button.clientHeight);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        setInterval(moveButton, 1000); // Change position every second
+    </script>
+
+    <div class="popup" id="popup">
+        <h2>We've updated our terms</h2>
+        <p>We encourage you to review our updated <a href="awesome_popup_terms/terms_of_sale" target="_blank">Terms of Sale</a>, <a href="awesome_popup_terms/terms_of_service" target="_blank">Terms of Service</a>, and <a href="awesome_popup_terms/privacy_policy" target="_blank">Privacy Policy</a>. By continuing, you agree to the updated Terms listed here.</p>
+        <button onclick="closePopup()">Continue</button>
+    </div>
+
+    <script>
+        var popup = document.getElementById("popup");
+        const lines = [
+        "Are you sure?",
+            "Really Really sure?",
+            "ERROR!!!",
+            "ERROR!!!!",
+        ]
+
+        function randomPopup() {
+            var condition = Math.floor(Math.random() * 30);
+            if (condition > 20 && popup.style.display !== "block") {
+                popup.style.display = "block";
+            }
+        }
+
+        setInterval(randomPopup, 1000); // Random popup check every 5 seconds
+
+        function closePopup() {
+            const x = Math.floor(Math.random() * 5)
+            if (x === 4) {
+                popup.style.display = 'none';
+                
+            } else {
+                popup.querySelector('p').innerText = lines[x]
+            }
+            
+        }
+    </script>
+
+
+    <div id="popupHolder">
+        <div class="randomPopup popup show">
+            <img src="https://picsum.photos/50">
+            <button onclick="popUpRemove(this)">X</button>
+        </div>
+    </div>
+
+    <script>
+        const rPopup = document.querySelector(".randomPopup")
+        const holder = document.getElementById('popupHolder')
+        window.setInterval(()=>{
+            const clone = rPopup.cloneNode(true)
+            const clone_img = rPopup.querySelector("img")
+            // clone_img.src = `https://picsum.photos/50?random=${Math.floor(Math.random()*100)}`
+            clone.style.top = Math.random() * window.innerHeight + "px" 
+            clone.style.left = Math.random() * window.innerWidth + "px"
+            holder.appendChild(clone)
+        }, 1000)
+
+        function popUpRemove(button) {
+            button.parentNode.remove()
+        }
+    </script>
+
+    <header>
+        <b>The Limes</b>
+    </header>
+    <main>
+        <div>
+            <p class="title">The Rise of Remote Work and Its Impact on Work-Life Balance</p>
+            <p>
+            Over the past few years, remote work has evolved from a niche option to a
+            mainstream reality for millions of employees around the world.   
+            </p> 
+            <p>
+            What was once seen as a perk or temporary measure during the 
+            pandemic has now become a long-term fixture for
+            many businesses and workers alike.
+            With the convenience of working from home, 
+            employees have gained a new sense of freedom, 
+            but this shift has also come with challenges. 
+            The balance between work and life has been altered,
+            often blurring the lines between professional responsibilities and personal time.
+            </p>
+            <p>
+                The rapid rise of electric vehicles can be attributed to several key technological advancements. 
+                The most notable of these is the development of more efficient and affordable battery technology. 
+                Lithium-ion batteries, which power most modern EVs, have seen significant improvements in energy density, charging speed, and cost over the past decade. 
+                These advancements have made EVs more affordable, with longer driving ranges and faster charging times, making them a more practical option for everyday consumers.
+            </p>
+            <p>
+                The trend of remote work has been growing steadily for years. Advances in technology, such as cloud computing, video conferencing, and collaboration tools, have made it easier for teams to stay connected and productive from virtually anywhere. In fact, according to a report by Gallup, the percentage of U.S. employees working remotely at least part-time has increased by 87% since the early 2000s.
+
+However, the COVID-19 pandemic accelerated this shift in unprecedented ways. As businesses scrambled to adjust to lockdowns and social distancing measures, remote work became a necessity for survival. This rapid adoption forced both companies and employees to adapt quickly, and many discovered that working from home could be just as productive — or even more so — than working in an office.
+            </p>
+        </div>
+    </main>
+</body>
+</html>
