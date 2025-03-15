@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Useless Article Terminal</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #000;
+      color: #0F0;
+      font-family: monospace;
+    }
+
+    #terminal {
+      height: calc(100% - 40px);
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+      white-space: pre-wrap;
+    }
+
+    #input-line {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      border-top: 1px solid #0F0;
+      background-color: #000;
+    }
+
+    #prompt {
+      margin-right: 10px;
+    }
+
+    #cmdInput {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: #0F0;
+      font-family: monospace;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <div id="input-line">
+    <span id="prompt">user@useless:~$</span>
+    <input id="cmdInput" type="text" autofocus autocomplete="off">
+  </div>
+  <script>
+    // Define a faux Linux-like file system
+    const fileSystem = {
+      "home": {
+        "user": {
+          "articles": {
+            "welcome.txt": "Welcome to the article terminal. Enjoy the useless experience!",
+            "mystery.txt": "This is a mystery article. There is nothing to see here."
+          },
+          "notes.txt": "User notes: Nothing important here."
+        }
+      },
+      "var": {
+        "log": {
+          "system.log": "System Log: Everything is running... sort of.",
+          "error.log": "Error Log: No errors detected."
+        }
+      },
+      "etc": {
+        "config": {
+          "settings.conf": "Config: The settings are purposely confusing."
+        }
+      }
+    };
+
+    let currentPath = "/home/user"; 
+    const terminal = document.getElementById('terminal');
+    const cmdInput = document.getElementById('cmdInput');
+    const promptSpan = document.getElementById('prompt');
+
+    // Update the prompt to display the current working directory
+    function updatePrompt() {
+      promptSpan.textContent = `user@useless:${currentPath}$`;
+    }
+    updatePrompt();
+
+    // Append output to the terminal window and auto-scroll
+    function printOutput(text) {
+      terminal.innerText += text + "\n";
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    // Print the command line (prompt plus command)
+    function printCommand(command) {
+      printOutput(`user@useless:${currentPath}$ ${command}`);
+    }
+
+    // Retrieve a node (directory or file) from the file system based on a path
+    function getPathNode(path) {
+      if (path === "/") return fileSystem;
+      const parts = path.split("/").filter(p => p);
+      let node = fileSystem;
+      for (const part of parts) {
+        if (node[part] !== undefined) {
+          node = node[part];
+        } else {
+          return null;
+        }
+      }
+      return node;
+    }
+
+    // Process and execute the given command
+    function handleCommand(inputCommand) {
+      const args = inputCommand.trim().split(/\s+/);
+      if (args.length === 0 || args[0] === "") return;
+      const cmd = args[0];
+
+      switch (cmd) {
+        case "help":
+          printOutput("Available commands: help, ls, cd, cat, pwd, clear, man, exit");
+          break;
+        case "ls":
+          {
+            const node = getPathNode(currentPath);
+            if (node && typeof node === "object") {
+              const items = Object.keys(node);
+              printOutput(items.join("   "));
+            } else {
+              printOutput("Not a directory.");
+            }
+          }
+          break;
+        case "cd":
+          {
+            if (args.length < 2) {
+              printOutput("Usage: cd [directory]");
+              break;
+            }
+            let target = args[1];
+            if (target === "..") {
+              if (currentPath === "/") {
+                printOutput("Already at root directory.");
+              } else {
+                const parts = currentPath.split("/").filter(p => p);
+                parts.pop();
+                currentPath = parts.length ? "/" + parts.join("/") : "/";
+              }
+            } else if (target.startsWith("/")) {
+              // Absolute path
+              if (getPathNode(target)) {
+                currentPath = target;
+              } else {
+                printOutput("Directory not found.");
+              }
+            } else {
+              // Relative path
+              let newPath = currentPath === "/" ? "/" + target : currentPath + "/" + target;
+              if (getPathNode(newPath)) {
+                currentPath = newPath;
+              } else {
+                printOutput("Directory not found.");
+              }
+            }
+            updatePrompt();
+          }
+          break;
+        case "cat":
+          {
+            if (args.length < 2) {
+              printOutput("Usage: cat [filename]");
+              break;
+            }
+            let target = args[1];
+            let filePath = currentPath === "/" ? "/" + target : currentPath + "/" + target;
+            const node = getPathNode(filePath);
+            if (node && typeof node === "string") {
+              printOutput(node);
+            } else {
+              printOutput("File not found.");
+            }
+          }
+          break;
+        case "pwd":
+          printOutput(currentPath);
+          break;
+        case "clear":
+          terminal.innerText = "";
+          break;
+        case "man":
+          {
+            if (args.length < 2) {
+              printOutput("Usage: man [command]");
+              break;
+            }
+            // Placeholder for manual pages
+            printOutput(`No manual entry for ${args[1]}`);
+          }
+          break;
+        case "exit":
+          {
+            if (confirm("Are you sure you want to terminate the terminal?")) {
+              printOutput("Terminal terminated.");
+              cmdInput.disabled = true;
+            }
+          }
+          break;
+        default:
+          printOutput("Command not recognized. Type 'help' for available commands.");
+      }
+    }
+
+    // Listen for the Enter key and process input commands
+    cmdInput.addEventListener('keydown', function(e) {
+      if (e.key === "Enter") {
+        const command = cmdInput.value;
+        printCommand(command);
+        handleCommand(command);
+        cmdInput.value = "";
+      }
+    });
+
+    // Display an initial welcome message
+    printOutput("Welcome to the useless article terminal.");
+    printOutput("Type 'help' for a list of commands.");
+  </script>
+</body>
+</html>
