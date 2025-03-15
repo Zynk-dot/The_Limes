@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html {
+                height: 100%;
+                padding: 0;
+            }
+            body {
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            iframe {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                border: none;
+            }
+            canvas {
+                position: absolute;
+                margin: 0;
+            }
+            button {
+                position: absolute;
+                top: 600px;
+                left: 400px;
+               
+            }
+        </style>
+    </head>
+    <body>
+        <button><a href="index.html">found me :)</a></button>
+        <canvas>
+
+        </canvas>
+        <iframe src="basic.html"></iframe>
+
+        
+        <script>
+            const canvas = document.querySelector("canvas")
+            const ctx = canvas.getContext('2d')
+            const leavebutton = document.querySelector("button")
+
+            var mouseX = 0
+            var mouseY = 0
+            window.onmousemove = (event) => {
+                mouseX = event.pageX
+                mouseY = event.pageY
+            }
+
+            window.onmousedown = (event) => {
+                const rect = leavebutton.getBoundingClientRect()
+                console.log(rect.left, rect.right, rect.bottom, rect.top)
+                if(event.pageX > rect.left &&
+                    event.pageX < rect.right &&
+                    event.pageY < rect.bottom &&
+                    event.pageY > rect.top
+                ) {
+                    window.location.href = 'index.html'
+                }
+            }
+            draw()
+            function draw() {
+                canvas.width = window.innerWidth
+                canvas.height = window.innerHeight
+                ctx.fillStyle = "black"
+                ctx.fillRect(0, 0, canvas.width, canvas.height)
+                ctx.beginPath()
+                ctx.arc(mouseX, mouseY, 50, 0, 2 * Math.PI)
+                
+                ctx.fill()
+                ctx.clip()
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                window.requestAnimationFrame(draw)
+            }
+        </script>
+    </body>
+</html>
