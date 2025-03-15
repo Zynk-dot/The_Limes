@@ -32,15 +32,63 @@
       background-color: #0066cc;
       color: #fff;
     }
+    .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    
+    }
+    .content {
+      width:325px;
+      border: solid;
+      border-width: 2px;
+      border-color: aquamarine;
+      text-align: center;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .galleryimg {
+      max-width: max-content;
+      height: 500px;
+    }
+  
   </style>
 </head>
 <body>
   <h1>Welcome to The Limes </h1> <hr>
   <p>Select a page below to continue:</p>
   <nav>
-    <a href="commandLinePage.html">Hackathon</a>
-    <a href="reloadingPage.html">Reloading Chaos</a>
-    <a href="popupPage.html">Pop ups</a>
+    <div class="gallery">
+      <div class="content">
+        <img class="galleryimg" src="images/terminal.png" alt="terminal image">
+        <a href="commandLinePage.html">Hackathon</a>
+      </div>
+      <div class="content">
+        <img class="galleryimg" src="images/reload.png" alt="reloading image">
+        <a href="reloadingPage.html">Reloading Chaos</a>
+      </div>
+      <div class="content">
+        <img class="galleryimg" src="images/popup.png" alt="popup image">
+        <a href="popupPage.html">Pop ups</a>
+      </div>    
+      <div class="content">
+        <img class="galleryimg" src="images/spotlight.png" alt="spotlight image">
+        <a href="spotlightPage.html">Spotlight</a>
+      </div>
+      <div class="content">
+        <img class="galleryimg" src="images/glitch.png" alt="glitch">
+        <a href="glitchPage.html">Glitch</a>
+      </div>     
+      <div class="content">
+        <img class="galleryimg" src="images/404.png" alt="404">
+        <a href="404Page.html">404</a>
+      </div> 
+    </div>
+
   </nav>
 </body>
 </html>
